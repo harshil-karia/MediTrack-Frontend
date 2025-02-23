@@ -1,116 +1,141 @@
-/* General Styling */
-.login-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  .login-popup-container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    width: 350px;
-    text-align: center;
-  }
-  
-  .login-popup-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  .login-popup-title img {
-    width: 20px;
-    cursor: pointer;
-  }
-  
-  .login-popup-input {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .login-popup-input input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 14px;
-  }
-  
-  /* ✅ Fixed Radio Button Styling */
-  .radio-group {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .radio-group label {
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  
-  .radio-group input[type="radio"] {
-    appearance: none; /* Hide default radio button */
-    width: 16px;
-    height: 16px;
-    border: 2px solid #007bff;
-    border-radius: 50%;
-    position: relative;
-    cursor: pointer;
-    outline: none;
-    transition: 0.2s ease-in-out;
-  }
-  
-  /* When checked, add background color */
-  .radio-group input[type="radio"]:checked {
-    background-color: #007bff;
-    border: 5px solid white;
-    box-shadow: 0 0 0 2px #007bff;
-  }
-  
-  /* Button */
-  button {
-    width: 100%;
-    background: #007bff;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  button:hover {
-    background: #0056b3;
-  }
-  
-  /* Checkbox Agreement */
-  .login-popup-condition {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 15px;
-  }
-  
-  .login-popup-condition input {
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-  }
-  
+/* General Styles */
+.admin-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-user-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-user-btn:hover {
+  background: #0056b3;
+}
+
+/* Table Styles */
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background: #007bff;
+  color: white;
+}
+
+td {
+  font-size: 14px;
+}
+
+tr:hover {
+  background: #f1f1f1;
+}
+
+/* Icons */
+.icon-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.edit-btn {
+  color: #f0ad4e;
+}
+
+.delete-btn {
+  color: #d9534f;
+}
+
+/* Popup Styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+/* Centering the Popup */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px;
+  z-index: 1001;
+}
+
+.popup input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.submit-btn {
+  background: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background: #218838;
+}
+
+.cancel-btn {
+  background: #dc3545;
+  color: white;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.cancel-btn:hover {
+  background: #c82333;
+}

@@ -69,6 +69,16 @@ const Navbar = ({ setShowLogin }) => {
 
                         </li>
                         <li className="nav-item">
+                            <Link
+                                className={`nav-link ${menu === "lab" ? "active" : ""}`}
+                                to="/lab"
+                                onClick={() => setMenu("lab")}
+                            >
+                                Admin
+                            </Link>
+
+                        </li>
+                        <li className="nav-item">
                             <li className="nav-item">
                                 <Link className={`nav-link ${menu === "profile" ? "active" : ""}`} to="/profile" onClick={() => setMenu("profile")}>
                                     Profile
