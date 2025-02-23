@@ -21,7 +21,7 @@ const Navbar = ({ setShowLogin }) => {
             <div className="container">
                 {/* Brand Logo */}
                 <Link className="navbar-brand" to="/">
-                    <img src="" alt="MediTrack" className="logo" />
+                    <img src={assets.logo} alt="MediTrack" className="logo" />
                 </Link>
 
                 {/* Navbar Toggler */}

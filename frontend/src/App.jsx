@@ -7,6 +7,8 @@ import LoginPopup from './components/LoginPopup/LoginPopup'
 import History from './pages/History/History';  // Import History Component
 import Reports from './pages/Reports/Reports';  // Import Reports Component
 import Profile from './pages/Profile/Profile';
+import ProtectedRoute from "./components/ProtectedRoute"; 
+import lab from "./pages/Admin_page/lab"
 
 
 
@@ -22,9 +24,14 @@ const App = () => {
       <div className="main-content">
       <Routes>
         <Route path='/' element={<Home/>} />
+        <Route element={<ProtectedRoute />}>
+
         <Route path="/history" element={<History />} />
         <Route path="/reports" element={<Reports />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/lab" element={<lab />} />
+
+        </Route>
 
         
       </Routes>

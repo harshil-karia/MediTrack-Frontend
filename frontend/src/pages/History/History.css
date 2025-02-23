@@ -12,66 +12,12 @@
     align-items: center;
     background: #563dff;
     color: white;
-    padding: 15px 20px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .history-header h2 {
     font-size: 20px;
-}
-
-/* Filter Buttons */
-.history-filters {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.history-filters button {
-    background: #b1aaaa;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.history-filters .active {
-    background: #563dff;
-    color: white;
-}
-
-/* Search Bar & New Guest Button */
-.search-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: auto;
-}
-
-.search-container input {
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    flex: 1;
-}
-
-.new-guest-btn {
-    background: #563dff;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.new-guest-btn:hover {
-    background: #4225cc;
 }
 
 /* Table Styling */
@@ -81,6 +27,7 @@
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2px;
 }
 
 .history-table table {
@@ -88,53 +35,21 @@
     border-collapse: collapse;
 }
 
-.history-table th, .history-table td {
+.history-table th, 
+.history-table td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
 .history-table th {
-    background: #f8f8f8;
-}
-
-/* Status Badges */
-.status {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
+    background: rgb(7, 197, 98);
     font-weight: bold;
-    margin-right: 5px;
+    text-transform: uppercase;
 }
 
-/* Status Colors */
-.status.early-check-in {
-    background: #28a745;
-    color: white;
-}
 
-.status.late-check-out {
-    background: #ffc107;
-    color: black;
-}
-
-.status.check-in {
-    background: #17a2b8;
-    color: white;
-}
-
-.status.check-out {
-    background: #ff9800;
-    color: white;
-}
-
-.status.canceled {
-    background: #dc3545;
-    color: white;
-}
-
-/* Actions */
+/* Reports Button */
 .action-btn {
     background: transparent;
     border: none;
@@ -147,3 +62,23 @@
     color: #563dff;
 }
 
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .history-container {
+        width: 100%;
+    }
+
+    .history-table table {
+        font-size: 14px;
+    }
+
+    .history-table th, 
+    .history-table td {
+        padding: 8px;
+    }
+
+    .status {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+}

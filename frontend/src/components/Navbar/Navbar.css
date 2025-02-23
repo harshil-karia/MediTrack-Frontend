@@ -6,13 +6,15 @@
     position: fixed;  /* Fix navbar at the top */
     top: 0;
     left: 0;
+    height: 70px;
     width: 100%;
     z-index: 1000; /* Ensure navbar is above other elements */
     background-color: white; /* Ensure background remains visible */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
 }
 .navbar .logo{
-    width: 160px;
+    width: 70px;
+    height: 70px;
     cursor: pointer;
 }
 .navbar-right {

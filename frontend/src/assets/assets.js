@@ -15,6 +15,7 @@ import bag_icon from './bag_icon.png'
 import logout_icon from './logout_icon.png'
 import history_icon from './history_icon.png'
 import upload_icon from './upload_icon.png'
+import logo from './logo.png'
 
 
 
@@ -36,7 +37,8 @@ export const assets = {
     bag_icon,
     logout_icon,
     history_icon,
-    upload_icon
+    upload_icon,
+    logo
     
     
 }
