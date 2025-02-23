@@ -1,123 +1,121 @@
-import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import "./History.css";
 import { StoreContext } from '../../context/StoreContext';
-import './History.css';
+import NewGuestModal from "../../components/NewGuestModal/NewGuestModal";
+
+
+
+const historyData = [
+    {
+        name: "Jane Cooper",
+        status: ["Early Check In", "Late Check Out"],
+        checkIn: "02-03-24, 1:00 PM",
+        checkOut: "02-03-24, 11:30 AM",
+        source: "Booking.com",
+        details: "+1394734838 | jane.cooper@example.com"
+    },
+    {
+        name: "Cody Fisher",
+        status: ["Check In", "Check Out"],
+        checkIn: "02-03-24, 3:00 PM",
+        checkOut: "02-03-24, 3:00 PM",
+        source: "Booking.com",
+        details: "+1394734838 | jane.cooper@example.com"
+    },
+    {
+        name: "Esther Howard",
+        status: ["Early Check In", "Check Out"],
+        checkIn: "02-03-24, 3:00 PM",
+        checkOut: "02-03-24, 3:00 PM",
+        source: "Booking.com",
+        details: "+1394734838 | jane.cooper@example.com"
+    },
+    {
+        name: "Jenny Wilson",
+        status: ["Early Check In", "Late Check Out"],
+        checkIn: "02-03-24, 3:00 PM",
+        checkOut: "02-03-24, 3:00 PM",
+        source: "Booking.com",
+        details: "+1394734838 | jane.cooper@example.com"
+    },
+    {
+        name: "Kristin Watson",
+        status: ["Canceled"],
+        checkIn: "02-03-24, 3:00 PM",
+        checkOut: "02-03-24, 3:00 PM",
+        source: "Booking.com",
+        details: "+1394734838 | jane.cooper@example.com"
+    },
+    {
+        name: "Cameron Williamson",
+        status: ["Canceled"],
+        checkIn: "02-03-24, 3:00 PM",
+        checkOut: "02-03-24, 3:00 PM",
+        source: "Booking.com",
+        details: "+1394734838 | jane.cooper@example.com"
+    }
+];
 
 const History = () => {
-    const { url, token } = useContext(StoreContext);
-    const [reports, setReports] = useState([]);
-    const [file, setFile] = useState(null);
-    const [loading, setLoading] = useState(false);
-
-    // Fetch medical reports on page load
-    useEffect(() => {
-        fetchReports();
-    }, []);
-
-    const fetchReports = async () => {
-        try {
-            const response = await axios.get(`${url}/api/reports`, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-            setReports(response.data.reports);
-        } catch (error) {
-            // console.error("Error fetching reports:", error);
-            // alert("Failed to load reports");
-        }
-    };
-
-    // Upload a new report
-    const uploadReport = async () => {
-        if (!file) {
-            alert("Please select a file to upload!");
-            return;
-        }
-
-        setLoading(true);
-        const formData = new FormData();
-        formData.append("report", file);
-
-        try {
-            const response = await axios.post(`${url}/api/reports/upload`, formData, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-
-            alert(response.data.message);
-            fetchReports(); // Refresh list after upload
-        } catch (error) {
-            console.error("Error uploading report:", error);
-            alert("Upload failed, please try again.");
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    // Delete a report
-    const deleteReport = async (reportId) => {
-        if (!window.confirm("Are you sure you want to delete this report?")) return;
-
-        try {
-            await axios.delete(`${url}/api/reports/${reportId}`, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-            alert("Report deleted successfully");
-            fetchReports(); // Refresh list after deletion
-        } catch (error) {
-            console.error("Error deleting report:", error);
-            alert("Failed to delete report");
-        }
-    };
-
+    const [showModal, setShowModal] = useState(false);
+    
     return (
         <div className="history-container">
-            <h2>Medical Report History</h2>
+            <div className="history-header">
+                <h2>History</h2>
+            </div>
+            
+            <div className="history-filters">
+                <button className="active">Reservations</button>
+                <button>Check In</button>
+                <button>In House</button>
+                <button>Check Out</button>
+                <button>Checked Out</button>
+                
+                <div className="search-container">
+                    <input type="text" placeholder="Search guests" />
+                    <button className="new-guest-btn" onClick={() => setShowModal(true)}>New Guest</button>
+                    </div>
+                    {showModal && <NewGuestModal closeModal={() => setShowModal(false)} />}
 
-           
+            </div>
 
-            {/* Reports List */}
-            <table className="report-table">
-                <thead>
-                    <tr>
-                        <th>User Id</th>
-                        <th>Report Name</th>
-                        <th>Upload Date</th>
-                        <th>Action</th>
-                        <th>By user or not ?</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {reports.length > 0 ? (
-                        reports.map((report) => (
-                            <tr key={report._id}>
+            <div className="history-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Check In / Check Out</th>
+                            <th>Source</th>
+                            <th>Details</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {historyData.map((item, index) => (
+                            <tr key={index}>
+                                <td>{item.name}</td>
                                 <td>
-                                    <a href={report.fileUrl} target="_blank" rel="noopener noreferrer">
-                                        {report.name}
-                                    </a>
+                                    {item.status.map((status, i) => (
+                                        <span key={i} className={`status ${status.toLowerCase().replace(/\s+/g, "-")}`}>
+                                            {status}
+                                        </span>
+                                    ))}
                                 </td>
-                                <td>{new Date(report.createdAt).toLocaleDateString()}</td>
+                                <td>{item.checkIn} <br /> {item.checkOut}</td>
+                                <td>{item.source}</td>
+                                <td>{item.details}</td>
                                 <td>
-                                    <button className="delete-btn" onClick={() => deleteReport(report._id)}>
-                                        Delete
-                                    </button>
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-
+                                    <button className="action-btn">✏️</button>
+                                    <button className="action-btn">📄</button>
+                                    <button className="action-btn">❌</button>
                                 </td>
                             </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td colSpan="5">No reports found</td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

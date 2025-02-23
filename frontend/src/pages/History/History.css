@@ -1,59 +1,149 @@
+/* General Container */
 .history-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
+    width: 90%;
+    margin: auto;
+    font-family: "Poppins", sans-serif;
 }
 
-.upload-section {
+/* Header Section */
+.history-header {
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    background: #563dff;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
     margin-bottom: 20px;
 }
 
-.upload-section input {
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.history-header h2 {
+    font-size: 20px;
 }
 
-.upload-section button {
-    background-color: rgb(20, 174, 118);
-    color: white;
+/* Filter Buttons */
+.history-filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.history-filters button {
+    background: #b1aaaa;
+    padding: 8px 12px;
     border: none;
-    padding: 10px 15px;
+    border-radius: 5px;
     cursor: pointer;
-    border-radius: 4px;
+    font-size: 14px;
+    transition: 0.3s;
 }
 
-.upload-section button:disabled {
-    background-color: gray;
-    cursor: not-allowed;
+.history-filters .active {
+    background: #563dff;
+    color: white;
 }
 
-.report-table {
+/* Search Bar & New Guest Button */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.search-container input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    flex: 1;
+}
+
+.new-guest-btn {
+    background: #563dff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.new-guest-btn:hover {
+    background: #4225cc;
+}
+
+/* Table Styling */
+.history-table {
+    overflow-x: auto;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.history-table table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.report-table th, .report-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
+.history-table th, .history-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
-.delete-btn {
-    background-color: red;
+.history-table th {
+    background: #f8f8f8;
+}
+
+/* Status Badges */
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Status Colors */
+.status.early-check-in {
+    background: #28a745;
     color: white;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-    border-radius: 4px;
 }
 
-.delete-btn:hover {
-    background-color: darkred;
+.status.late-check-out {
+    background: #ffc107;
+    color: black;
 }
+
+.status.check-in {
+    background: #17a2b8;
+    color: white;
+}
+
+.status.check-out {
+    background: #ff9800;
+    color: white;
+}
+
+.status.canceled {
+    background: #dc3545;
+    color: white;
+}
+
+/* Actions */
+.action-btn {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.action-btn:hover {
+    color: #563dff;
+}
+
