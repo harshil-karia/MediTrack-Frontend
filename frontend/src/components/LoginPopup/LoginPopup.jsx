@@ -55,7 +55,7 @@ const LoginPopup = ({ setShowLogin }) => {
         }
       } else {
         try {
-          const response = await axios.post(url + "/api/user/verify-otp", { email: data.email, otp });
+          const response = await axios.post("http://localhost:3000/user/auth/signin", { email: data.email, otp });
           if (response.data.success) {
             setToken(response.data.token);
             localStorage.setItem("token", response.data.token);
@@ -70,9 +70,11 @@ const LoginPopup = ({ setShowLogin }) => {
       }
     } else {
       try {
-        const response = await axios.post(url + "/api/user/login", { ...data, role });
-        if (response.data.success) {
-          setToken(response.data.token);
+        const response = await axios.post("http://localhost:3000/user/auth/signin", { email: data.email, password: data.password });
+        console.log(response)
+        if (response.data) {
+          localStorage.setItem("at",response.data.access_token)
+          setToken(response.data.access_token);
           localStorage.setItem("token", response.data.token);
           setShowLogin(false);
         } else {
